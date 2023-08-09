@@ -13,6 +13,8 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 	
 copy scripts/ /
 
+EXPOSE 9000
+
 RUN chmod +x /script.sh
 
 CMD ["sh", "script.sh"]
