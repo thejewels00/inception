@@ -1,15 +1,12 @@
-version: "3.8"
+version: "3.5"
 
-network:
+networks:
   my_net:
-    name: my_net
     driver: bridge
-
-
 
 services:
   nginx:
-    build: requirements/nginx/
+    build: ./requirements/nginx/
     container_name: nginx
     ports:
       - "443:443"
@@ -17,31 +14,22 @@ services:
       - wp:/var/www/html/wordpress
     networks:
       - my_net
-    depands_on : wordpress
+    depends_on:
+      - wordpress
 
   wordpress:
-    build: requirement/wordpress/
+    build: ./requirements/wordpress/
     container_name: wordpress
     volumes:
       - wp:/var/www/html/wordpress
     networks:
       - my_net
-      
-      
-      
-      
-      
-      
-      
-  #mariadb:
-
 
 volumes:
-
-  wp: 
+  wp:
     name: wp
-    dirver : local
-    dirver_opts:
+    driver : local
+    driver_opts:
       type: none
       o : bind
-      device : /home/jawaher/Documents/volumes/wordpress
+      device : /home/jchennak/data/wordpress
