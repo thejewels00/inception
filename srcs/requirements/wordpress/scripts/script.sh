@@ -1,5 +1,16 @@
 #!/bin/bash
 
+#wordpress script
+
+# MYSQL_DB=j_db
+# MYSQL_USER=jawaherSQL
+# MYSQL_PASSWD=j123
+# WP_ADMIN=jroot
+# WP_ADMIN_PASSWD=jroot123
+# WP_ADMIN_MAIL=jroot@jojo.ma
+# WP_USER=jawaher
+# WP_USER_PASSWD=jawaher123
+# WP_USER_MAIL=jawaher@jojo.ma
 
 mkdir -p /var/www/html/
 mkdir -p /run/php
@@ -18,8 +29,11 @@ chown -R www-data:www-data /var/www/html/wordpress/*
 cd /var/www/html/wordpress
 
 
-#dowlanding wordpress files 
-#wp core download --allow-root --path=/var/www/html/
+#creating users :D 
+
+wp config create --dbname=$MYSQL_DB  --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWD --dbhost=mariadb --allow-root
+wp core install --url=jchennak.42.fr --title=inception --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASSWD --admin_email=$WP_ADMIN_MAIL --allow-root
+wp user create $WP_USER $WP_USER_MAIL --user_pass=$WP_USER_PASSWD --role=author --allow-root 
 
 #bach yb9a mhangi  mrani :D
 exec php-fpm7.3 -F -R

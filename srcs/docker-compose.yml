@@ -18,12 +18,26 @@ services:
       - wordpress
 
   wordpress:
+    env_file:
+      - .env
     build: ./requirements/wordpress/
     container_name: wordpress
     volumes:
       - wp:/var/www/html/wordpress
     networks:
       - my_net
+    depends_on:
+      - mariadb
+
+  mariadb:
+    env_file:
+      - .env
+    build: ./requirements/mariadb/
+    container_name: mariadb
+    networks:
+      - my_net
+    volumes:
+      - db:/var/lib/mysql 
 
 volumes:
   wp:
@@ -33,3 +47,10 @@ volumes:
       type: none
       o : bind
       device : /home/jchennak/data/wordpress
+  db:
+    name: db
+    driver : local
+    driver_opts:
+      type: none
+      o : bind
+      device : /home/jchennak/data/mariadb
