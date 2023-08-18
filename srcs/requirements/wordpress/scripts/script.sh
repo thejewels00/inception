@@ -2,15 +2,6 @@
 
 #wordpress script
 
-# MYSQL_DB=j_db
-# MYSQL_USER=jawaherSQL
-# MYSQL_PASSWD=j123
-# WP_ADMIN=jroot
-# WP_ADMIN_PASSWD=jroot123
-# WP_ADMIN_MAIL=jroot@jojo.ma
-# WP_USER=jawaher
-# WP_USER_PASSWD=jawaher123
-# WP_USER_MAIL=jawaher@jojo.ma
 
 mkdir -p /var/www/html/
 mkdir -p /run/php

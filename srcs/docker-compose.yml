@@ -18,8 +18,7 @@ services:
       - wordpress
 
   wordpress:
-    env_file:
-      - .env
+    env_file: .env
     build: ./requirements/wordpress/
     container_name: wordpress
     volumes:
@@ -30,8 +29,7 @@ services:
       - mariadb
 
   mariadb:
-    env_file:
-      - .env
+    env_file: .env
     build: ./requirements/mariadb/
     container_name: mariadb
     networks:
